@@ -34,21 +34,19 @@ jobs:
         with:
           enablement: true
 
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1'
+          bundler-cache: false
+
       - name: Build documentation site
         run: |
-          mkdir -p _site
+          # Create docs structure in root
+          cp README.md index.md
 
-          # Copy markdown files (Jekyll will render them as HTML)
-          cp README.md _site/index.md
-          cp API_DOCUMENTATION.md _site/
-
-          # Copy SDK documentation
-          mkdir -p _site/rust-sdk _site/typescript-sdk
-          cp rust-sdk/README.md _site/rust-sdk/
-          cp typescript-sdk/README.md _site/typescript-sdk/
-
-          # Create Jekyll config for GitHub Pages
-          cat > _site/_config.yml << 'EOF'
+          # Create Jekyll config
+          cat > _config.yml << 'EOF'
           theme: jekyll-theme-cayman
           title: X (Twitter) SDKs
           description: Dual-language SDKs for Twitter/X API v2 with OAuth 1.0a
@@ -56,7 +54,20 @@ jobs:
           github:
             repository_url: https://github.com/0xCryptoZen/x-sdks
             is_project_page: true
+          plugins:
+            - jekyll-relative-links
+          relative_links:
+            enabled: true
+            collections: true
+          include:
+            - API_DOCUMENTATION.md
+            - rust-sdk/README.md
+            - typescript-sdk/README.md
           EOF
+
+          # Install Jekyll and build
+          gem install jekyll bundler
+          jekyll build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
