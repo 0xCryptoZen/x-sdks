@@ -28,7 +28,7 @@ tokio = { version = "1.0", features = ["full"] }
 ### TypeScript
 
 ```bash
-npm install @x-sdks/typescript
+npm install @zen_tools/x-sdk
 ```
 
 ---
@@ -61,7 +61,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 ### TypeScript
 
 ```typescript
-import { XClient, createTweetRequest } from '@x-sdks/typescript';
+import { XClient, createTweetRequest } from '@zen_tools/x-sdk';
 
 async function main() {
   const client = new XClient({
@@ -152,7 +152,7 @@ let credentials = Credentials::new(
 ### TypeScript
 
 ```typescript
-import { Credentials } from '@x-sdks/typescript';
+import { Credentials } from '@zen_tools/x-sdk';
 
 const credentials: Credentials = {
   appKey: 'your_app_key',
@@ -178,7 +178,7 @@ let client = XClient::new(credentials)?;
 
 **TypeScript:**
 ```typescript
-import { XClient } from '@x-sdks/typescript';
+import { XClient } from '@zen_tools/x-sdk';
 
 const client = new XClient({
   credentials: {
@@ -205,7 +205,7 @@ let client = XClient::builder(credentials)
 
 **TypeScript:**
 ```typescript
-import { XClient } from '@x-sdks/typescript';
+import { XClient } from '@zen_tools/x-sdk';
 
 const client = new XClient({
   credentials,
@@ -231,7 +231,7 @@ println!("Tweet ID: {}", response.data.id);
 
 **TypeScript:**
 ```typescript
-import { createTweetRequest } from '@x-sdks/typescript';
+import { createTweetRequest } from '@zen_tools/x-sdk';
 
 const tweet = createTweetRequest('Hello, world!');
 const response = await client.tweets().post(tweet);
@@ -313,7 +313,7 @@ if error.is_retryable() {
 ### TypeScript Error Handling
 
 ```typescript
-import { XError, XErrorCode } from '@x-sdks/typescript';
+import { XError, XErrorCode } from '@zen_tools/x-sdk';
 
 try {
   const response = await client.tweets().post(tweet);
@@ -455,7 +455,7 @@ let url = response.tweet_url("username");
 
 **TypeScript:**
 ```typescript
-import { getTweetUrl } from '@x-sdks/typescript';
+import { getTweetUrl } from '@zen_tools/x-sdk';
 
 const url = getTweetUrl(response, 'username');
 // Returns: "https://twitter.com/username/status/1234567890"

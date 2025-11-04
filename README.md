@@ -49,7 +49,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 Fully typed SDK built with axios and modern TypeScript.
 
 ```typescript
-import { XClient, createTweetRequest } from '@x-sdks/typescript';
+import { XClient, createTweetRequest } from '@zen_tools/x-sdk';
 
 async function main() {
   const client = new XClient({
@@ -83,9 +83,9 @@ tokio = { version = "1.0", features = ["full"] }
 
 **TypeScript:**
 ```bash
-npm install @x-sdks/typescript
+npm install @zen_tools/x-sdk
 # or
-yarn add @x-sdks/typescript
+yarn add @zen_tools/x-sdk
 ```
 
 ### Authentication
@@ -133,7 +133,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 **TypeScript:**
 ```typescript
-import { XClient, createTweetRequest } from '@x-sdks/typescript';
+import { XClient, createTweetRequest } from '@zen_tools/x-sdk';
 
 const client = new XClient({
   credentials: {

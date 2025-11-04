@@ -14,15 +14,15 @@ A TypeScript SDK for the Twitter/X API v2 with OAuth 1.0a authentication support
 ## Installation
 
 ```bash
-npm install @x-sdks/typescript
+npm install @zen_tools/x-sdk
 # or
-yarn add @x-sdks/typescript
+yarn add @zen_tools/x-sdk
 ```
 
 ## Quick Start
 
 ```typescript
-import { XClient, createTweetRequest } from '@x-sdks/typescript';
+import { XClient, createTweetRequest } from '@zen_tools/x-sdk';
 
 // Create client with credentials
 const client = new XClient({
@@ -45,7 +45,7 @@ console.log('Tweet posted! ID:', response.data.id);
 ### Basic Tweet Posting
 
 ```typescript
-import { XClient, createTweetRequest } from '@x-sdks/typescript';
+import { XClient, createTweetRequest } from '@zen_tools/x-sdk';
 
 async function postTweet() {
   const client = new XClient({
@@ -68,7 +68,7 @@ async function postTweet() {
 ### Error Handling
 
 ```typescript
-import { XClient, createTweetRequest, XError, XErrorCode } from '@x-sdks/typescript';
+import { XClient, createTweetRequest, XError, XErrorCode } from '@zen_tools/x-sdk';
 
 async function postWithErrorHandling() {
   const client = new XClient({
@@ -116,7 +116,7 @@ async function postWithErrorHandling() {
 ### Custom Configuration
 
 ```typescript
-import { XClient } from '@x-sdks/typescript';
+import { XClient } from '@zen_tools/x-sdk';
 
 const client = new XClient({
   credentials: {

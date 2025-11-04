@@ -5,7 +5,7 @@
  *
  * @example
  * ```typescript
- * import { XClient, createTweetRequest } from '@x-sdks/typescript';
+ * import { XClient, createTweetRequest } from '@zen_tools/x-sdk';
  *
  * const client = new XClient({
  *   credentials: {

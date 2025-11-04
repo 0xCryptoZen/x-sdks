@@ -1,5 +1,5 @@
 {
-  "name": "@x-sdks/typescript",
+  "name": "@zen_tools/x-sdk",
   "version": "1.0.0",
   "description": "TypeScript SDK for Twitter/X API with OAuth 1.0a support",
   "main": "dist/index.js",

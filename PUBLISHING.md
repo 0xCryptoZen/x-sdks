@@ -22,7 +22,7 @@
 
 ### 2. npm 包权限
 
-确保你的 npm 账户有权限发布 `@x-sdks/typescript` 包：
+确保你的 npm 账户有权限发布 `@zen_tools/x-sdk` 包：
 
 ```bash
 # 登录 npm
@@ -31,8 +31,9 @@ npm login
 # 检查当前用户
 npm whoami
 
-# 如果是新包，需要先创建组织
-# 访问 https://www.npmjs.com/org/create
+# 确保你是 zen_tools organization 的成员
+# 访问 https://www.npmjs.com/settings/zen_tools/members
+# 或者创建新组织: https://www.npmjs.com/org/create
 ```
 
 ## 发布新版本
@@ -133,16 +134,16 @@ GitHub Actions 执行的步骤：
 
 ```bash
 # 1. 检查 npm 上的版本
-npm view @x-sdks/typescript version
+npm view @zen_tools/x-sdk version
 
 # 2. 在新项目中测试安装
 mkdir test-install
 cd test-install
 npm init -y
-npm install @x-sdks/typescript
+npm install @zen_tools/x-sdk
 
 # 3. 测试导入
-node -e "const sdk = require('@x-sdks/typescript'); console.log('OK')"
+node -e "const sdk = require('@zen_tools/x-sdk'); console.log('OK')"
 ```
 
 ## 常见问题
@@ -194,7 +195,7 @@ npm version patch
 git push origin --tags
 
 # 2. 或者废弃有问题的版本
-npm deprecate @x-sdks/typescript@0.2.0 "This version has bugs, use 0.2.1 instead"
+npm deprecate @zen_tools/x-sdk@0.2.0 "This version has bugs, use 0.2.1 instead"
 
 # 注意：npm 不允许删除已发布超过 72 小时的包
 ```

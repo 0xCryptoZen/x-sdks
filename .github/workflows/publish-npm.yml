@@ -80,11 +80,11 @@ jobs:
           body: |
             ## TypeScript SDK Release ${{ github.ref_name }}
 
-            Published to npm: [@x-sdks/typescript](https://www.npmjs.com/package/@x-sdks/typescript)
+            Published to npm: [@zen_tools/x-sdk](https://www.npmjs.com/package/@zen_tools/x-sdk)
 
             ### Installation
             ```bash
-            npm install @x-sdks/typescript@${{ github.ref_name }}
+            npm install @zen_tools/x-sdk@${{ github.ref_name }}
             ```
           draft: false
           prerelease: false

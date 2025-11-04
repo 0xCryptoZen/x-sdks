@@ -33,7 +33,7 @@ tokio = { version = "1.0", features = ["full"] }
 
 **TypeScript:**
 ```bash
-npm install @x-sdks/typescript
+npm install @zen_tools/x-sdk
 ```
 
 ### Your First Tweet
@@ -60,7 +60,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 **TypeScript:**
 ```typescript
-import { XClient, createTweetRequest } from '@x-sdks/typescript';
+import { XClient, createTweetRequest } from '@zen_tools/x-sdk';
 
 const client = new XClient({
   credentials: {
@@ -119,7 +119,7 @@ match client.tweets().post(tweet).await {
 
 **TypeScript:**
 ```typescript
-import { XError, XErrorCode } from '@x-sdks/typescript';
+import { XError, XErrorCode } from '@zen_tools/x-sdk';
 
 try {
   const response = await client.tweets().post(tweet);
