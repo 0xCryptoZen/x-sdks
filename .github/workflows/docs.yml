@@ -38,7 +38,7 @@ jobs:
         run: |
           mkdir -p _site
 
-          # Copy markdown files as-is for now (we'll use Jekyll to render them)
+          # Copy markdown files (Jekyll will render them as HTML)
           cp README.md _site/index.md
           cp API_DOCUMENTATION.md _site/
 
@@ -56,42 +56,6 @@ jobs:
           github:
             repository_url: https://github.com/0xCryptoZen/x-sdks
             is_project_page: true
-          EOF
-
-          # Create a simple index.html that redirects to rendered markdown
-          cat > _site/index.html << 'EOF'
-          <!DOCTYPE html>
-          <html lang="en">
-          <head>
-              <meta charset="UTF-8">
-              <meta name="viewport" content="width=device-width, initial-scale=1.0">
-              <meta http-equiv="refresh" content="0; url=./index.md">
-              <title>X SDKs Documentation</title>
-              <style>
-                  body {
-                      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-                      display: flex;
-                      justify-content: center;
-                      align-items: center;
-                      height: 100vh;
-                      margin: 0;
-                      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                      color: white;
-                  }
-                  .container {
-                      text-align: center;
-                  }
-                  h1 { font-size: 3em; margin-bottom: 20px; }
-                  p { font-size: 1.2em; }
-              </style>
-          </head>
-          <body>
-              <div class="container">
-                  <h1>🚀 X SDKs</h1>
-                  <p>Redirecting to documentation...</p>
-              </div>
-          </body>
-          </html>
           EOF
 
       - name: Upload artifact
