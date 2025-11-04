@@ -284,17 +284,32 @@ Contributions are welcome! Please follow the workflow defined in [CLAUDE.md](./C
 
 ## 📦 Publishing
 
-For maintainers:
-- **🚀 Unified Release** (Recommended): See [RELEASE.md](./RELEASE.md) - One command publishes both SDKs
-- **TypeScript SDK**: See [PUBLISHING.md](./PUBLISHING.md) - Individual npm publishing
-- **Rust SDK**: See [PUBLISHING_RUST.md](./PUBLISHING_RUST.md) - Individual crates.io publishing
+For maintainers - choose your preferred method:
 
-### Quick Release
+### 🚀 Quick Release (Simplest)
 
 ```bash
-# Publish both SDKs at once
-./scripts/release-all.sh
+# One command publishes both SDKs
+./scripts/tag-release.sh v2.0.3
 ```
+
+### ⚡ Auto Release (With Git Hooks)
+
+```bash
+# One-time setup
+./scripts/setup-hooks.sh
+
+# Then just tag and push
+git tag v2.0.3
+git push origin v2.0.3
+```
+
+### 📚 Documentation
+
+- **[QUICK_RELEASE.md](./QUICK_RELEASE.md)** - Quick reference for all release methods
+- **[RELEASE.md](./RELEASE.md)** - Complete unified release guide
+- **[PUBLISHING.md](./PUBLISHING.md)** - TypeScript SDK only
+- **[PUBLISHING_RUST.md](./PUBLISHING_RUST.md)** - Rust SDK only
 
 ## 📄 License
 

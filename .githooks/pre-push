@@ -1,0 +1,44 @@
+#!/bin/bash
+# Git pre-push hook to auto-update version from tags
+
+# Check if we're pushing a version tag
+while read local_ref local_sha remote_ref remote_sha
+do
+    # Check if we're pushing a tag
+    if [[ $local_ref =~ refs/tags/v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+        TAG_NAME=$(basename "$local_ref")
+        VERSION=${TAG_NAME#v}
+
+        echo "🏷️  Detected version tag: $TAG_NAME"
+
+        # Check if VERSION file matches
+        CURRENT_VERSION=$(cat VERSION 2>/dev/null | tr -d '[:space:]')
+
+        if [ "$CURRENT_VERSION" != "$VERSION" ]; then
+            echo "⚠️  VERSION file ($CURRENT_VERSION) doesn't match tag ($VERSION)"
+            echo "📝 Auto-updating version files..."
+
+            # Update VERSION file
+            echo "$VERSION" > VERSION
+
+            # Sync to both SDKs
+            ./scripts/sync-version.sh
+
+            # Commit the changes
+            git add VERSION typescript-sdk/package.json rust-sdk/Cargo.toml rust-sdk/Cargo.lock
+            git commit -m "chore: auto-update version to $VERSION from tag
+
+Automatically updated by pre-push hook when pushing tag $TAG_NAME"
+
+            # Move tag to new commit
+            git tag -f "$TAG_NAME"
+
+            echo "✅ Version files updated and committed"
+            echo "🏷️  Tag moved to new commit"
+        else
+            echo "✅ VERSION file already matches tag"
+        fi
+    fi
+done
+
+exit 0
