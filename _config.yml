@@ -1,0 +1,20 @@
+theme: jekyll-theme-cayman
+title: X (Twitter) SDKs
+description: Dual-language SDKs for Twitter/X API v2 with OAuth 1.0a
+show_downloads: false
+github:
+  repository_url: https://github.com/0xCryptoZen/x-sdks
+  is_project_page: true
+
+# Exclude development files from the site
+exclude:
+  - .claude/
+  - CLAUDE.md
+  - agents/
+  - rust-sdk/target/
+  - typescript-sdk/node_modules/
+  - typescript-sdk/dist/
+  - "*.lock"
+  - .git/
+  - .github/
+  - .gitignore
