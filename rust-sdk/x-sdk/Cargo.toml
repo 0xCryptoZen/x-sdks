@@ -1,0 +1,25 @@
+[package]
+name = "x-sdk"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+description = "Rust SDK for Twitter/X API with OAuth 1.0a support"
+keywords = ["twitter", "x", "api", "sdk", "oauth"]
+categories = ["api-bindings", "web-programming::http-client"]
+
+[dependencies]
+reqwest = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+tokio = { workspace = true }
+oauth1-request = { workspace = true }
+thiserror = { workspace = true }
+
+[dev-dependencies]
+tokio-test = "0.4"
+
+[[example]]
+name = "post_tweet"
+path = "../examples/post_tweet.rs"

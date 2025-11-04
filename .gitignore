@@ -1,0 +1,51 @@
+# Claude Code artifacts
+.claude/
+
+# Agent outputs (keep the structure but ignore outputs)
+agents/*/outputs/*.md
+!agents/*/outputs/.gitkeep
+
+# Rust
+rust-sdk/target/
+rust-sdk/**/*.rs.bk
+rust-sdk/**/Cargo.lock
+
+# TypeScript/Node
+typescript-sdk/node_modules/
+typescript-sdk/dist/
+typescript-sdk/.npm/
+typescript-sdk/package-lock.json
+typescript-sdk/yarn.lock
+typescript-sdk/pnpm-lock.yaml
+typescript-sdk/.pnpm-store/
+
+# TypeScript build info
+typescript-sdk/*.tsbuildinfo
+typescript-sdk/.eslintcache
+
+# Test coverage
+typescript-sdk/coverage/
+typescript-sdk/.nyc_output/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS
+Thumbs.db
+.DS_Store
