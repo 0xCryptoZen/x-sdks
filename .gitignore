@@ -1,9 +1,10 @@
-# Claude Code artifacts
+# Claude Code artifacts - DO NOT commit to GitHub
 .claude/
+CLAUDE.md
 
 # Agent outputs (keep the structure but ignore outputs)
-agents/*/outputs/*.md
-!agents/*/outputs/.gitkeep
+agents/
+!agents/.gitkeep
 
 # Rust
 rust-sdk/target/
