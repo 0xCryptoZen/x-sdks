@@ -27,7 +27,7 @@ X SDKs provides dual-language implementations for Twitter/X API v2, offering ide
 **Rust:**
 ```toml
 [dependencies]
-x-sdk = { path = "./rust-sdk/x-sdk" }
+x-sdk = { git = "https://github.com/0xCryptoZen/x-sdks", subdirectory = "rust-sdk/x-sdk" }
 tokio = { version = "1.0", features = ["full"] }
 ```
 
