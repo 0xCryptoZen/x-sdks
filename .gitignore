@@ -2,7 +2,7 @@
 .claude/
 CLAUDE.md
 
-# Agent outputs (keep the structure but ignore outputs)
+# Agent outputs
 agents/
 !agents/.gitkeep
 
