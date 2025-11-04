@@ -285,8 +285,16 @@ Contributions are welcome! Please follow the workflow defined in [CLAUDE.md](./C
 ## 📦 Publishing
 
 For maintainers:
-- **TypeScript SDK**: See [PUBLISHING.md](./PUBLISHING.md) for instructions on publishing to npm
-- **Rust SDK**: See [PUBLISHING_RUST.md](./PUBLISHING_RUST.md) for instructions on publishing to crates.io
+- **🚀 Unified Release** (Recommended): See [RELEASE.md](./RELEASE.md) - One command publishes both SDKs
+- **TypeScript SDK**: See [PUBLISHING.md](./PUBLISHING.md) - Individual npm publishing
+- **Rust SDK**: See [PUBLISHING_RUST.md](./PUBLISHING_RUST.md) - Individual crates.io publishing
+
+### Quick Release
+
+```bash
+# Publish both SDKs at once
+./scripts/release-all.sh
+```
 
 ## 📄 License
 

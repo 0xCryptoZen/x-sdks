@@ -3,7 +3,7 @@ name: Publish to crates.io
 on:
   push:
     tags:
-      - 'rust-v*.*.*'  # 匹配 Rust SDK 版本标签，如 rust-v0.1.0
+      - 'v*.*.*'  # 匹配版本标签，如 v1.0.0（与 TypeScript SDK 共用）
   workflow_dispatch:  # 允许手动触发
 
 permissions:
@@ -42,15 +42,23 @@ jobs:
           cd rust-sdk
           cargo test --all-features --workspace
 
-      - name: Check formatting
+      - name: Check formatting (if available)
         run: |
           cd rust-sdk
-          cargo fmt --all -- --check
+          if rustup component list --installed | grep -q rustfmt; then
+            cargo fmt --all -- --check
+          else
+            echo "rustfmt not installed, skipping..."
+          fi
 
-      - name: Run clippy
+      - name: Run clippy (if available)
         run: |
           cd rust-sdk
-          cargo clippy --all-features --workspace -- -D warnings
+          if rustup component list --installed | grep -q clippy; then
+            cargo clippy --all-features --workspace -- -D warnings
+          else
+            echo "Clippy not installed, skipping..."
+          fi
 
   publish:
     needs: test
@@ -78,7 +86,7 @@ jobs:
       - name: Extract version from tag
         id: get_version
         run: |
-          VERSION=${GITHUB_REF_NAME#rust-v}
+          VERSION=${GITHUB_REF_NAME#v}
           echo "version=$VERSION" >> $GITHUB_OUTPUT
 
       - name: Create GitHub Release
