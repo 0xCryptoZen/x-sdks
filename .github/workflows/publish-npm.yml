@@ -1,0 +1,90 @@
+name: Publish to npm
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'  # 匹配版本标签，如 v0.1.0, v1.2.3
+  workflow_dispatch:  # 允许手动触发
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: typescript-sdk/package.json
+
+      - name: Install dependencies
+        run: |
+          cd typescript-sdk
+          npm ci
+
+      - name: Run tests
+        run: |
+          cd typescript-sdk
+          npm test
+
+      - name: Build
+        run: |
+          cd typescript-sdk
+          npm run build
+
+  publish:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://registry.npmjs.org'
+          cache: 'npm'
+          cache-dependency-path: typescript-sdk/package.json
+
+      - name: Install dependencies
+        run: |
+          cd typescript-sdk
+          npm ci
+
+      - name: Build package
+        run: |
+          cd typescript-sdk
+          npm run build
+
+      - name: Publish to npm
+        run: |
+          cd typescript-sdk
+          npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Create GitHub Release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref_name }}
+          release_name: Release ${{ github.ref_name }}
+          body: |
+            ## TypeScript SDK Release ${{ github.ref_name }}
+
+            Published to npm: [@x-sdks/typescript](https://www.npmjs.com/package/@x-sdks/typescript)
+
+            ### Installation
+            ```bash
+            npm install @x-sdks/typescript@${{ github.ref_name }}
+            ```
+          draft: false
+          prerelease: false

@@ -282,6 +282,10 @@ Contributions are welcome! Please follow the workflow defined in [CLAUDE.md](./C
 4. Commit with issue reference: `feat: description (#issue)`
 5. Create a pull request
 
+## 📦 Publishing
+
+For maintainers: See [PUBLISHING.md](./PUBLISHING.md) for instructions on publishing new versions to npm.
+
 ## 📄 License
 
 MIT License - see [LICENSE](./LICENSE) for details.
