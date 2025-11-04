@@ -284,7 +284,9 @@ Contributions are welcome! Please follow the workflow defined in [CLAUDE.md](./C
 
 ## 📦 Publishing
 
-For maintainers: See [PUBLISHING.md](./PUBLISHING.md) for instructions on publishing new versions to npm.
+For maintainers:
+- **TypeScript SDK**: See [PUBLISHING.md](./PUBLISHING.md) for instructions on publishing to npm
+- **Rust SDK**: See [PUBLISHING_RUST.md](./PUBLISHING_RUST.md) for instructions on publishing to crates.io
 
 ## 📄 License
 

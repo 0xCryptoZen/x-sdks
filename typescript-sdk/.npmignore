@@ -1,4 +1,12 @@
-# Source files (only publish dist/)
+# =============================================================================
+# npm Package Configuration
+# =============================================================================
+# Note: package.json "files" field is set to ["dist"] which takes precedence.
+# This file serves as a backup and documents what should NOT be published.
+# Only compiled code in dist/ will be included in the npm package.
+# =============================================================================
+
+# Source TypeScript files (only publish compiled JS in dist/)
 src/
 tests/
 examples/
@@ -8,7 +16,10 @@ tsconfig.json
 tsconfig.build.json
 jest.config.js
 .eslintrc.js
+.eslintrc.json
 .prettierrc
+.prettierrc.json
+.prettierignore
 
 # Development files
 *.test.ts
@@ -17,29 +28,38 @@ __tests__/
 coverage/
 .nyc_output/
 
-# Build artifacts
+# Build artifacts and cache
 *.tsbuildinfo
 .eslintcache
-
-# Documentation (keep README.md and CHANGELOG.md)
-# They are useful for npm users
+dist/**/*.map
+dist/**/*.tsbuildinfo
 
 # Git files
 .git/
 .gitignore
+.gitattributes
 
 # CI/CD
 .github/
 
-# Environment
+# Environment files
 .env
 .env.*
+.env.local
+.env.development
+.env.production
+
+# Lock files (not needed in published package)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
 
 # Logs
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+lerna-debug.log*
 
 # Dependencies
 node_modules/
@@ -47,10 +67,28 @@ node_modules/
 # OS files
 .DS_Store
 Thumbs.db
+desktop.ini
 
-# IDE
+# IDE and editor files
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
+*.sublime-project
+*.sublime-workspace
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# =============================================================================
+# Files to KEEP in the package (explicitly listed for clarity)
+# =============================================================================
+# - dist/            (compiled JavaScript and type definitions)
+# - README.md        (package documentation)
+# - CHANGELOG.md     (version history)
+# - LICENSE          (if present)
+# - package.json     (package metadata)
+# =============================================================================

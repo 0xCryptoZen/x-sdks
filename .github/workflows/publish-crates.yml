@@ -1,0 +1,111 @@
+name: Publish to crates.io
+
+on:
+  push:
+    tags:
+      - 'rust-v*.*.*'  # 匹配 Rust SDK 版本标签，如 rust-v0.1.0
+  workflow_dispatch:  # 允许手动触发
+
+permissions:
+  contents: write
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Cache cargo registry
+        uses: actions/cache@v4
+        with:
+          path: ~/.cargo/registry
+          key: ${{ runner.os }}-cargo-registry-${{ hashFiles('**/Cargo.lock') }}
+
+      - name: Cache cargo index
+        uses: actions/cache@v4
+        with:
+          path: ~/.cargo/git
+          key: ${{ runner.os }}-cargo-git-${{ hashFiles('**/Cargo.lock') }}
+
+      - name: Cache cargo build
+        uses: actions/cache@v4
+        with:
+          path: rust-sdk/target
+          key: ${{ runner.os }}-cargo-build-target-${{ hashFiles('**/Cargo.lock') }}
+
+      - name: Run tests
+        run: |
+          cd rust-sdk
+          cargo test --all-features --workspace
+
+      - name: Check formatting
+        run: |
+          cd rust-sdk
+          cargo fmt --all -- --check
+
+      - name: Run clippy
+        run: |
+          cd rust-sdk
+          cargo clippy --all-features --workspace -- -D warnings
+
+  publish:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Cache cargo registry
+        uses: actions/cache@v4
+        with:
+          path: ~/.cargo/registry
+          key: ${{ runner.os }}-cargo-registry-${{ hashFiles('**/Cargo.lock') }}
+
+      - name: Publish to crates.io
+        run: |
+          cd rust-sdk/x-sdk
+          cargo publish --token ${{ secrets.CARGO_TOKEN }}
+        env:
+          CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_TOKEN }}
+
+      - name: Extract version from tag
+        id: get_version
+        run: |
+          VERSION=${GITHUB_REF_NAME#rust-v}
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Create GitHub Release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref_name }}
+          release_name: Rust SDK Release ${{ steps.get_version.outputs.version }}
+          body: |
+            ## Rust SDK Release v${{ steps.get_version.outputs.version }}
+
+            Published to crates.io: [x-sdk](https://crates.io/crates/x-sdk)
+
+            ### Installation
+            ```toml
+            [dependencies]
+            x-sdk = "${{ steps.get_version.outputs.version }}"
+            ```
+
+            Or using cargo:
+            ```bash
+            cargo add x-sdk@${{ steps.get_version.outputs.version }}
+            ```
+
+            ### Documentation
+            - [docs.rs](https://docs.rs/x-sdk/${{ steps.get_version.outputs.version }})
+            - [GitHub](https://github.com/0xCryptoZen/x-sdks/tree/main/rust-sdk)
+          draft: false
+          prerelease: false
