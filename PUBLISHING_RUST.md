@@ -24,7 +24,7 @@
 
 ### 2. crates.io 账户权限
 
-确保你的 crates.io 账户有权限发布 `x-sdk` crate：
+确保你的 crates.io 账户有权限发布 `x_sdk` crate：
 
 ```bash
 # 登录 crates.io
@@ -161,18 +161,18 @@ GitHub Actions 执行的步骤：
 
 ```bash
 # 1. 检查 crates.io 上的版本
-cargo search x-sdk
+cargo search x_sdk
 
 # 2. 在新项目中测试安装
 cargo new test-install
 cd test-install
-cargo add x-sdk
+cargo add x_sdk
 
 # 3. 测试编译
 cargo build
 
 # 4. 查看文档
-# 访问 https://docs.rs/x-sdk
+# 访问 https://docs.rs/x_sdk
 ```
 
 ## 常见问题
@@ -242,10 +242,10 @@ cargo clippy --all-features --workspace -- -D warnings
 ./scripts/release-rust.sh
 
 # 2. 或者使用 cargo yank（不删除，但不推荐使用）
-cargo yank --version 0.2.0 x-sdk
+cargo yank --version 0.2.0 x_sdk
 
 # 3. 取消 yank
-cargo yank --undo --version 0.2.0 x-sdk
+cargo yank --undo --version 0.2.0 x_sdk
 
 # 注意：crates.io 不允许删除已发布的版本
 # 只能 yank（标记为不推荐使用）
@@ -283,8 +283,8 @@ git push origin rust-v0.2.0
 
 发布后，文档会自动在以下位置更新：
 
-- **docs.rs**: https://docs.rs/x-sdk
-- **crates.io**: https://crates.io/crates/x-sdk
+- **docs.rs**: https://docs.rs/x_sdk
+- **crates.io**: https://crates.io/crates/x_sdk
 - **GitHub**: https://github.com/0xCryptoZen/x-sdks/tree/main/rust-sdk
 
 ## 相关链接
@@ -303,5 +303,5 @@ git push origin rust-v0.2.0
 | **Token Secret** | `CARGO_TOKEN` | `NPM_TOKEN` |
 | **Tag 前缀** | `rust-v*` | `v*` |
 | **脚本** | `./scripts/release-rust.sh` | `./scripts/release.sh` |
-| **包名** | `x-sdk` | `@zen_tools/x-sdk` |
-| **安装命令** | `cargo add x-sdk` | `npm install @zen_tools/x-sdk` |
+| **包名** | `x_sdk` | `@zen_tools/x-sdk` |
+| **安装命令** | `cargo add x_sdk` | `npm install @zen_tools/x-sdk` |
