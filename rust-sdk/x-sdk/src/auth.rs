@@ -71,7 +71,7 @@ impl OAuth {
             &self.credentials.access_token,
             &self.credentials.access_secret,
         );
-        let token = OAuthToken::new(client.clone(), token_creds);
+        let token = OAuthToken::new(client, token_creds);
 
         // Generate OAuth authorization header with empty request parameters
         let auth_header = oauth1_request::authorize(method, url, &(), &token, HmacSha1::new());

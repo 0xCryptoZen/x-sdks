@@ -50,7 +50,7 @@ impl XClient {
     }
 
     /// Get tweets endpoint API
-    pub fn tweets(&self) -> Tweets {
+    pub fn tweets(&self) -> Tweets<'_> {
         Tweets::new(self)
     }
 
