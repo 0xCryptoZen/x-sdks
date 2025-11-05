@@ -1,6 +1,8 @@
 # X (Twitter) SDKs
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Crates.io](https://img.shields.io/crates/v/x-twitter-sdk)](https://crates.io/crates/x-twitter-sdk)
+[![npm](https://img.shields.io/npm/v/@zen_tools/x-sdk)](https://www.npmjs.com/package/@zen_tools/x-sdk)
 [![Rust Tests](https://img.shields.io/badge/rust%20tests-13%2F13%20passing-brightgreen)](./rust-sdk)
 [![Documentation](https://img.shields.io/badge/docs-GitHub%20Pages-blue)](https://0xCryptoZen.github.io/x-sdks)
 
@@ -77,7 +79,7 @@ async function main() {
 **Rust:**
 ```toml
 [dependencies]
-x-twitter-sdk = { git = "https://github.com/0xCryptoZen/x-sdks", subdirectory = "rust-sdk/x-sdk" }
+x-twitter-sdk = "2.0.8"
 tokio = { version = "1.0", features = ["full"] }
 ```
 
@@ -317,6 +319,11 @@ MIT License - see [LICENSE](./LICENSE) for details.
 
 ## 🔗 Links
 
+### Packages
+- **Rust (crates.io):** https://crates.io/crates/x-twitter-sdk
+- **TypeScript (npm):** https://www.npmjs.com/package/@zen_tools/x-sdk
+
+### Documentation & Resources
 - **Repository:** https://github.com/0xCryptoZen/x-sdks
 - **Documentation:** https://0xCryptoZen.github.io/x-sdks
 - **Twitter API v2:** https://developer.twitter.com/en/docs/twitter-api

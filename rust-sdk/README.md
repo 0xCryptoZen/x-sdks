@@ -13,7 +13,24 @@ A Rust SDK for the Twitter/X API v2 with OAuth 1.0a authentication support.
 
 ## Installation
 
+### From crates.io (Recommended)
+
 Add this to your `Cargo.toml`:
+
+```toml
+[dependencies]
+x-twitter-sdk = "2.0.8"
+tokio = { version = "1.0", features = ["full"] }
+```
+
+Or install via command line:
+
+```bash
+cargo add x-twitter-sdk
+cargo add tokio --features full
+```
+
+### From GitHub (Development Version)
 
 ```toml
 [dependencies]

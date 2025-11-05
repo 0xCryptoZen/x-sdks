@@ -21,7 +21,7 @@ This document provides a unified API reference for both **Rust** and **TypeScrip
 
 ```toml
 [dependencies]
-x-twitter-sdk = { git = "https://github.com/0xCryptoZen/x-sdks", subdirectory = "rust-sdk/x-sdk" }
+x-twitter-sdk = "2.0.8"
 tokio = { version = "1.0", features = ["full"] }
 ```
 
