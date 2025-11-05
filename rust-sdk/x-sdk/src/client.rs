@@ -26,7 +26,7 @@ impl XClient {
     ///
     /// # Example
     /// ```no_run
-    /// use x_sdk::{XClient, Credentials};
+    /// use x_twitter_sdk::{XClient, Credentials};
     ///
     /// let credentials = Credentials::new(
     ///     "app_key",

@@ -22,7 +22,7 @@ Dual-language SDKs for Twitter/X API v2 with OAuth 1.0a authentication. Built wi
 Type-safe, async SDK built with reqwest and tokio.
 
 ```rust
-use x_sdk::{XClient, Credentials, TweetRequest};
+use x_twitter_sdk::{XClient, Credentials, TweetRequest};
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
@@ -77,7 +77,7 @@ async function main() {
 **Rust:**
 ```toml
 [dependencies]
-x_sdk = { git = "https://github.com/0xCryptoZen/x-sdks", subdirectory = "rust-sdk/x-sdk" }
+x-twitter-sdk = { git = "https://github.com/0xCryptoZen/x-sdks", subdirectory = "rust-sdk/x-sdk" }
 tokio = { version = "1.0", features = ["full"] }
 ```
 
@@ -110,7 +110,7 @@ export X_ACCESS_SECRET="your_access_secret"
 
 **Rust:**
 ```rust
-use x_sdk::{XClient, Credentials, TweetRequest};
+use x_twitter_sdk::{XClient, Credentials, TweetRequest};
 use std::env;
 
 #[tokio::main]

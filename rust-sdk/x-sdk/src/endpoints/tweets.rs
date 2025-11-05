@@ -24,7 +24,7 @@ impl<'a> Tweets<'a> {
     ///
     /// # Example
     /// ```no_run
-    /// use x_sdk::{XClient, Credentials, TweetRequest};
+    /// use x_twitter_sdk::{XClient, Credentials, TweetRequest};
     ///
     /// #[tokio::main]
     /// async fn main() {

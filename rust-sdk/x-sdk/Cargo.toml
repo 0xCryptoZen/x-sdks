@@ -1,5 +1,5 @@
 [package]
-name = "x_sdk"
+name = "x-twitter-sdk"
 version.workspace = true
 edition.workspace = true
 license.workspace = true

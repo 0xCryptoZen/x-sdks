@@ -13,7 +13,7 @@
 //! ## Quick Start
 //!
 //! ```no_run
-//! use x_sdk::{XClient, Credentials, TweetRequest};
+//! use x_twitter_sdk::{XClient, Credentials, TweetRequest};
 //!
 //! #[tokio::main]
 //! async fn main() -> Result<(), Box<dyn std::error::Error>> {
@@ -44,7 +44,7 @@
 //! information for rate limiting.
 //!
 //! ```no_run
-//! use x_sdk::{XClient, Credentials, TweetRequest, XError};
+//! use x_twitter_sdk::{XClient, Credentials, TweetRequest, XError};
 //!
 //! #[tokio::main]
 //! async fn main() {

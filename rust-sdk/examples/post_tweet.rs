@@ -1,5 +1,5 @@
 use std::env;
-use x_sdk::{Credentials, TweetRequest, XClient};
+use x_twitter_sdk::{Credentials, TweetRequest, XClient};
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
