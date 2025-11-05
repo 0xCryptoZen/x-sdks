@@ -19,7 +19,7 @@ Add this to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-x-twitter-sdk = "2.0.8"
+x-twitter-sdk = "2.0.9"
 tokio = { version = "1.0", features = ["full"] }
 ```
 
