@@ -45,7 +45,10 @@ impl XError {
         matches!(
             self,
             XError::RateLimitExceeded { .. }
-                | XError::ApiError { code: 500..=599, .. }
+                | XError::ApiError {
+                    code: 500..=599,
+                    ..
+                }
                 | XError::NetworkError(_)
         )
     }

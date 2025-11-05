@@ -67,22 +67,25 @@ impl OAuth {
 
         // Convert to oauth1_request types
         let client = OAuthCredentials::new(&self.credentials.app_key, &self.credentials.app_secret);
-        let token_creds = OAuthCredentials::new(&self.credentials.access_token, &self.credentials.access_secret);
+        let token_creds = OAuthCredentials::new(
+            &self.credentials.access_token,
+            &self.credentials.access_secret,
+        );
         let token = OAuthToken::new(client.clone(), token_creds);
 
         // Generate OAuth authorization header with empty request parameters
         let auth_header = oauth1_request::authorize(method, url, &(), &token, HmacSha1::new());
 
         // Add the authorization header to the request
-        request
-            .headers_mut()
-            .insert("Authorization", auth_header.parse().map_err(|e| {
+        request.headers_mut().insert(
+            "Authorization",
+            auth_header.parse().map_err(|e| {
                 XError::OAuthError(format!("Failed to parse authorization header: {}", e))
-            })?);
+            })?,
+        );
 
         Ok(())
     }
-
 }
 
 #[cfg(test)]

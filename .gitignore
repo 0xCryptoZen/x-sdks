@@ -15,7 +15,7 @@ rust-sdk/**/Cargo.lock
 typescript-sdk/node_modules/
 typescript-sdk/dist/
 typescript-sdk/.npm/
-typescript-sdk/package-lock.json
+# typescript-sdk/package-lock.json  # Keep package-lock.json for reproducible builds in CI
 typescript-sdk/yarn.lock
 typescript-sdk/pnpm-lock.yaml
 typescript-sdk/.pnpm-store/
